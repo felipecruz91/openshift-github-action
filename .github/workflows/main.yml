@@ -12,6 +12,7 @@ jobs:
       - name: Setup OpenShift
         uses: manusa/actions-setup-openshift@v1.1.2
         with:
+          dns ip: 1.1.1.1
           oc version: "v3.11.0"
           github token: ${{ secrets.GITHUB_TOKEN }}
       - name: Cluster status
