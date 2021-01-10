@@ -1,0 +1,20 @@
+name: Example workflow
+
+on: [push]
+
+jobs:
+  example:
+    name: Example OpenShift Cluster interaction
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Setup OpenShift
+        uses: manusa/actions-setup-openshift@v1.1.2
+        with:
+          oc version: "v4.1.0"
+          github token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Cluster status
+        run: oc cluster status
+      - name: Cluster version
+        run: oc get clusterversion
