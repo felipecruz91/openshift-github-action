@@ -16,5 +16,7 @@ jobs:
           github token: ${{ secrets.GITHUB_TOKEN }}
       - name: Cluster status
         run: oc cluster status
-      - name: Cluster version
-        run: oc get clusterversion
+      - name: Create sample app
+        run: oc new-app https://github.com/sclorg/s2i-ruby-container.git --context-dir=2.0/test/puma-test-app
+      - name: Display pods
+        run: oc get pods
