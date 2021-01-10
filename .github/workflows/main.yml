@@ -18,5 +18,7 @@ jobs:
         run: oc cluster status
       - name: Create sample app
         run: oc new-app https://github.com/sclorg/s2i-ruby-container.git --context-dir=2.0/test/puma-test-app
-      - name: Display pods
-        run: oc get pods
+      - name: Track progress
+        run: oc logs -f bc/s2i-ruby-container
+      - name: View the app
+        run: oc status
